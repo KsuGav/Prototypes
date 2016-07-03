@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8"/>
+     <title>Title</title> 
+</head>
+<body>
+	<script>
+        //object human
+        function Human(){
+            this.speak= "I can speak";
+            this.walk="I can walk";
+            this.weight= function(kilo){
+                var weight=kilo;
+                return weight
+            };
+            //взаимодействие между классами
+            this.stroking = function(animal){
+                if(animal){
+                   return "Start stroking"
+                } else {
+                    return "Oops! Don't do it!"
+                }
+            }
+        }
+      //object man
+        function Man(){
+            this.say=function(){
+            console.log("I'm a man");
+        }
+        }
+        //set prototype relation
+        Man.prototype = new Human();
+
+        //object women
+        function Women(){
+            this.say = "I'm a women";
+        }
+        //set prototype relation
+        Women.prototype = new Human();
+
+        //object profession women
+        function Cleaner(name){
+            this.name = name;
+            this.duties = "cleaning aviaries";
+        }
+        Cleaner.prototype = new Women();
+        var new_cleaner = new Cleaner('Kate');
+        console.log('My name is '+new_cleaner.name+'. '+new_cleaner.say);
+
+        function Nurse(name){
+            this.name = name;
+            this.duties = "examination and treatment of animals";
+        }
+        Nurse.porototype = new Women();
+        var new_nurse = new Nurse("Sara");
+        console.log('My name is '+new_nurse.name+'. '+new_cleaner.speak);
+
+        //object profession man
+        function Guide(name){
+            this.name = name;
+            this.duties = 'guided tours for children';
+        }
+        Guide.prototype = new Man();
+        var new_guide = new Guide("Jack");
+        console.log('My name is '+new_guide.name+'. My weight '+new_cleaner.weight(60)+' kilo.');
+
+        function Engineer(name){
+            this.name = name;
+            this.duties = "repair designs";
+        }
+        Engineer.prototype = new Man();
+        var new_engineer = new Engineer('Tom');
+        console.log('My name is '+new_engineer.name+'. I must '+new_cleaner.duties);
+
+        //object animals
+        function Animals(){
+            this.eating = " like to eat";
+            this.sleeping = " like to sleep";
+            this.looking = " can see"
+        }
+
+        function Predator(){
+            this.eats = " meat";
+            this.strok = false;
+        }
+        Predator.prototype = new Animals();
+        function Lions(name,color){
+            this.name = name;
+            this.type = "lion";
+            this.wool = " wool";
+            this.color = color;
+        }
+        function Eagle(name,color){
+            this.name = name;
+            this.type = "eagle";
+            this.plumage = " feathers";
+            this.color = color;
+        }
+        Lions.prototype = new Predator();
+        var new_lion = new Lions("Alex","yellow");
+        Eagle.prototype = new Predator();
+        var new_eagle = new Eagle("Carl","brown");
+        console.log(new_lion.name+new_lion.eating+new_lion.eats);
+        console.log(new_eagle.name+" has a "+new_eagle.color+new_eagle.plumage);
+
+        function Herbivorous(){
+            this.eats = " grass";
+            this.strok = true;
+        }
+        Herbivorous.prototype = new Animals();
+
+        function Giraffe(name,color){
+            this.name = name;
+            this.type = "giraffe";
+            this.plumage = " wool"; //spotty;
+            this.color = color;
+        }
+        function Panda(name,color){
+            this.name=name;
+            this.type = "panda";
+            this.plumage = " wool"; //black and white;
+            this.color = color
+        }
+        Giraffe.prototype = new Herbivorous();
+        var new_giraffe = new Giraffe('Melman','spotty');
+        Panda.prototype = new Herbivorous();
+        var new_panda = new Panda("King",'black and white');
+        console.log(new_giraffe.name+' has a '+new_giraffe.color+new_giraffe.plumage);
+        console.log(new_panda.name+new_panda.eating+new_panda.eats+". It is a "+new_panda.type);
+
+        //Object ZOO
+        var Zoo = {
+            workers: [new_cleaner,new_nurse,new_guide,new_engineer],
+            animal : [new_lion,new_eagle,new_giraffe,new_panda]
+        };
+        console.log(Zoo);
+        console.log("Humen say "+new_cleaner.stroking(new_lion.strok));
+
+        </script>
+	</body>
+</html>
