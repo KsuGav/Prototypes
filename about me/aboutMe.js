@@ -26,7 +26,7 @@ function University(){
     this.education = 'Kharkiv National University of Economics';
     this.profession = 'Logistic';
     this.newhobbies = ['snowboarding','salsa','traveling','cooking'];
-    this.travel = ['Montenegro','Vien','Prague','Cyprus','Budapest','Saint-Petersburg','Moscow'];
+    this.travel = ['Montenegro','Vien','Prague','Cyprus','Budapest','Saint-Petersburg'];
     this.fromYears = 17;
     this.toYears = 22;
 }
